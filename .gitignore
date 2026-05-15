@@ -10,3 +10,6 @@
 /agent.py.backup
 /pyrightconfig.json
 /eval1_*.txt
+/.venv
+/__pycache__
+

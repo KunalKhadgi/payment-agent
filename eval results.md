@@ -257,15 +257,15 @@ qwen3 models use extended thinking (`<think>` blocks). This improves reasoning q
 
 ### Remaining Issues (not yet fixed)
 
-| Issue                                             | Affected Models       | Recommended Fix                                                                                                                                                     |
-| ------------------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Hallucinated `lookup_account` on greeting         | llama3:3b, qwen3:4b   | Strengthen system prompt: "On any greeting, NEVER call a tool. Ask for Account ID only." Add `_next_step_hint` guard for empty history                              |
-| Premature `verify_identity` (no secondary factor) | llama3:3b, qwen3:1.7b | Add explicit gate in `_next_step_hint`: do not hint `verify_identity` until `secondary_factor_provided` is `True` in state                                          |
-| `<think>` leaking into tool arguments             | qwen3:1.7b            | Strip `<think>` blocks from _arguments_ received from model, not just from `content`                                                                                |
-| Hallucinated card numbers                         | llama3:3b, qwen3:1.7b | Add card-number extraction logic (already present in `_extract_card_number`) to hint; make state hint explicit: "Use exactly the card number the user provided"     |
-| Multi-field message → stall                       | qwen3:1.7b, qwen3:4b  | Parse multi-field messages into state before calling the model; or instruct model to process fields one-at-a-time with explicit "you already have card: X" in state |
-| `num_ctx: 4096` too small for qwen3:4b            | qwen3:4b              | Raise to `6144` or `8192`; compact state JSON (remove indentation)                                                                                                  |
-| `num_predict: 400` starves thinking models        | qwen3                 | Raise to `600`–`800` to give thinking headroom before tool call                                                                                                     |
+| Issue                                             | Affected Models       |
+| ------------------------------------------------- | --------------------- |
+| Hallucinated `lookup_account` on greeting         | llama3:3b, qwen3:4b   |
+| Premature `verify_identity` (no secondary factor) | llama3:3b, qwen3:1.7b |
+| `<think>` leaking into tool arguments             | qwen3:1.7b            |
+| Hallucinated card numbers                         | llama3:3b, qwen3:1.7b |
+| Multi-field message → stall                       | qwen3:1.7b, qwen3:4b  |
+| `num_ctx: 4096` too small for qwen3:4b            | qwen3:4b              |
+| `num_predict: 400` starves thinking models        | qwen3                 |
 
 ---
 
