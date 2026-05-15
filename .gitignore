@@ -1,0 +1,12 @@
+/.venv
+/venv_py311
+/__pycache__
+*.pyc
+*.pyo
+/%.zip
+/agent_FIXED
+/agent_FIXED.zip
+/agent_FIXED_2
+/agent.py.backup
+/pyrightconfig.json
+/eval1_*.txt
