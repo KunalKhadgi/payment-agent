@@ -1,0 +1,100 @@
+════════════════════════════════════════════════════════════════════
+  A1: Happy Path — Natural Language
+════════════════════════════════════════════════════════════════════
+
+[Turn 1] USER  (opening)
+  >> 'Hi there!'
+[DEBUG] Model output: Hello! Please provide your Account ID (e.g., ACC1001).
+[DEBUG] Parsed 0 tool call(s)
+[Turn 1] AGENT
+  Hello! Please provide your Account ID (e.g., ACC1001).
+  ────────────────────────────────────────────────────────────────
+
+[Turn 2] USER  (account ID in natural sentence)
+  >> 'yeah my account number is ACC1001 I think'
+[DEBUG] Model output: 
+[DEBUG] Parsed 1 tool call(s)
+[TOOL]   lookup_account({"account_id": "ACC1001"})
+[RESULT] {"success": true, "account_id": "ACC1001", "balance": 1250.75, "status": "active"}
+[DEBUG] Model output: Account found. Please provide your full name.
+[DEBUG] Parsed 0 tool call(s)
+[Turn 2] AGENT
+  Account found. Please provide your full name.
+  ────────────────────────────────────────────────────────────────
+
+[Turn 3] USER
+  >> 'my name is Nithin Jain'
+[DEBUG] Model output: 
+[DEBUG] Parsed 0 tool call(s)
+[DEBUG] Model output: Thank you. Please provide your date of birth (YYYY-MM-DD), Aadhaar last 4, or pincode.
+[DEBUG] Parsed 0 tool call(s)
+[Turn 3] AGENT
+  Thank you. Please provide your date of birth (YYYY-MM-DD), Aadhaar last 4, or pincode.
+  ────────────────────────────────────────────────────────────────
+
+[Turn 4] USER  (DOB in spoken format)
+  >> 'I was born on 14th May 1990'
+[DEBUG] Model output: 
+[DEBUG] Parsed 0 tool call(s)
+[DEBUG] Model output: 
+[DEBUG] Parsed 0 tool call(s)
+[Turn 4] AGENT
+  I'm having trouble processing your request. Please try again.
+  ────────────────────────────────────────────────────────────────
+
+[Turn 5] USER  (amount in words)
+  >> 'I want to pay a thousand rupees'
+[DEBUG] Model output: 
+[DEBUG] Parsed 0 tool call(s)
+[DEBUG] Model output: 
+[DEBUG] Parsed 0 tool call(s)
+[Turn 5] AGENT
+  I'm having trouble processing your request. Please try again.
+  ────────────────────────────────────────────────────────────────
+
+[Turn 6] USER  (card with spaces)
+  >> 'the card number is 4532 0151 1283 0366'
+[DEBUG] Model output: 
+[DEBUG] Parsed 0 tool call(s)
+[DEBUG] Model output: 
+[DEBUG] Parsed 0 tool call(s)
+[Turn 6] AGENT
+  I'm having trouble processing your request. Please try again.
+  ────────────────────────────────────────────────────────────────
+
+[Turn 7] USER  (CVV spoken as words)
+  >> 'CVV is one two three'
+[DEBUG] Model output: 
+[DEBUG] Parsed 0 tool call(s)
+[DEBUG] Model output: 
+[DEBUG] Parsed 0 tool call(s)
+[Turn 7] AGENT
+  I'm having trouble processing your request. Please try again.
+  ────────────────────────────────────────────────────────────────
+
+[Turn 8] USER  (natural expiry format)
+  >> 'expires December 2027'
+[DEBUG] Model output: 
+[DEBUG] Parsed 0 tool call(s)
+[DEBUG] Model output: 
+[DEBUG] Parsed 0 tool call(s)
+[Turn 8] AGENT
+  I'm having trouble processing your request. Please try again.
+  ────────────────────────────────────────────────────────────────
+
+[Turn 9] USER
+  >> 'name on card is Nithin Jain'
+[DEBUG] Model output: 
+[DEBUG] Parsed 0 tool call(s)
+[DEBUG] Model output: 
+[DEBUG] Parsed 0 tool call(s)
+[Turn 9] AGENT
+  I'm having trouble processing your request. Please try again.
+  ────────────────────────────────────────────────────────────────
+
+════════════════════════════════════════════════════════════════════
+  ❌  FAIL — A1
+      • Expected one of ('txn_', 'successful', 'success', 'transaction') in responses
+════════════════════════════════════════════════════════════════════
+
+// Time: 22min 19sec
